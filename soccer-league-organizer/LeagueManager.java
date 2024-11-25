@@ -14,6 +14,7 @@ public class LeagueManager {
     (creating teams, adding/removing players from a team, etc.) */
      TeamsList teamList = new TeamsList();
 
+    // Executes the Soccer League Organizer
     teamList.run();
   }
 }

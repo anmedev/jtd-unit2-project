@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.util.*;
 
 public class TeamsList {
-    private List<Team> teams;
+    private final List<Team> teams;
     Scanner scanner = new Scanner(System.in);
 
     public TeamsList() {
         this.teams = new ArrayList<>();
     }
 
+    // Method to execute the Soccer League Organizer
     public void run() {
         String userSelection;
         do {
@@ -26,7 +27,7 @@ public class TeamsList {
 
             try {
                 userSelection = scanner.nextLine();
-                switch (userSelection.toLowerCase()) { // Handle input case insensitivity
+                switch (userSelection.toLowerCase()) {
                     case "create":
                         createTeam();
                         break;
@@ -47,7 +48,7 @@ public class TeamsList {
                         break;
                     case "quit":
                         System.out.println("Thank you for using our program!");
-                        return; // This line will end the program, so we should leave it as is for quitting.
+                        return;
                     default:
                         System.out.printf("Invalid choice. Try again. %n");
                 }
@@ -89,7 +90,7 @@ public class TeamsList {
     // Method to view a height report for a selected team
     private void viewHeightReport() {
         if (teams.isEmpty()) {
-            System.out.println("No teams available. Please create a team first.");
+            System.out.println("There are no teams available. Please create a team first.");
             return;
         }
 
@@ -107,7 +108,7 @@ public class TeamsList {
         List<Player> players = selectedTeam.getPlayersList();
 
         if (players.isEmpty()) {
-            System.out.println("No players on this team.");
+            System.out.println("There are no players on this team.");
             return;
         }
 
@@ -128,13 +129,12 @@ public class TeamsList {
                         player.isPreviousExperience() ? "experienced" : "inexperienced");
             }
         }
-        // The method finishes, and control will go back to the main menu because it's not returning or exiting.
     }
 
     // Method to view the roster of a selected team
     private void viewTeamRoster() {
         if (teams.isEmpty()) {
-            System.out.println("No teams available. Please create a team first.");
+            System.out.println("There are no teams available. Please create a team first.");
             return;
         }
 
@@ -169,10 +169,9 @@ public class TeamsList {
     // New method to generate and display the league balance report
     private void viewLeagueBalanceReport() {
         if (teams.isEmpty()) {
-            System.out.println("No teams available. Please create a team first.");
+            System.out.println("There are no teams available. Please create a team first.");
             return;
         }
-
 
         Map<String, Map<String, Integer>> leagueBalance = new LinkedHashMap<>();
 
@@ -220,7 +219,7 @@ public class TeamsList {
         // Method to add a player to a team
         private void addPlayerToTeam() {
             if (teams.isEmpty()) {
-                System.out.println("No teams available. Please create a team first.");
+                System.out.println("There are no teams available. Please create a team first.");
                 return;
             }
 
@@ -238,7 +237,7 @@ public class TeamsList {
         // Filter available players (not already in teams)
         List<Player> availablePlayers = getAvailablePlayers();
         if (availablePlayers.isEmpty()) {
-            System.out.println("No available players to add.");
+            System.out.println("There are no available players to add.");
             return;
         }
 
@@ -262,14 +261,14 @@ public class TeamsList {
                     selectedTeam.getTeamName(),
                     selectedTeam.getCoachName());
         } else {
-            System.out.println("Team is already full. Player not added.");
+            System.out.println("Sorry, this team is already full. We can't add your selected player.");
         }
     }
 
     // Method to remove player from team
     private void removePlayerFromTeam() {
         if (teams.isEmpty()) {
-            System.out.println("No teams available. Please create a team first.");
+            System.out.println("There are no teams available. Please create a team first.");
             return;
         }
 
@@ -288,7 +287,7 @@ public class TeamsList {
         // Display players in the selected team
         List<Player> players = selectedTeam.getPlayersList();
         if (players.isEmpty()) {
-            System.out.println("No players on this team to remove.");
+            System.out.println("There are no players on this team to remove.");
             return;
         }
 
@@ -310,7 +309,6 @@ public class TeamsList {
                 removedPlayer.getLastName(),
                 selectedTeam.getTeamName());
     }
-
 
 
     // Helper method to find unassigned players
@@ -352,7 +350,5 @@ public class TeamsList {
         }
         return heightGroups;
     }
-
-
 }
 
