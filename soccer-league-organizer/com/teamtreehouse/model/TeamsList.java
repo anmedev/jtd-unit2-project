@@ -2,9 +2,6 @@ package com.teamtreehouse.model;
 
 import java.io.IOException;
 import java.util.*;
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.LinkedHashMap;
 
 public class TeamsList {
     private List<Team> teams;
